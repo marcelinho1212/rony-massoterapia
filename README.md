@@ -1,150 +1,219 @@
-# Sistema de Agendamento Online para Massoterapia
+Sistema de Agendamento Online para Massoterapia
 
-Sistema web desenvolvido em Django para agendamento online de sessões de massoterapia, com fluxo completo de escolha de profissional, serviço, data, horário e confirmação via WhatsApp.
+Sistema web de agendamento online desenvolvido com Django e PostgreSQL, focado em profissionais de massoterapia.
+Permite que clientes escolham profissional, serviço, data e horário disponível, com confirmação via WhatsApp.
 
-O projeto foi pensado para uso real, com foco em robustez da agenda, organização de domínio e boas práticas de desenvolvimento.
+Projeto desenvolvido com foco em arquitetura limpa, boas práticas, robustez de agenda e portfólio profissional.
 
----
+🚀 Funcionalidades
 
-## 🎯 Objetivo do Projeto
+Página pública de agendamento
 
-Permitir que clientes realizem agendamentos de forma simples e intuitiva, enquanto os profissionais gerenciam serviços, disponibilidade e horários por meio do Django Admin, sem necessidade de contato manual prévio.
+Escolha de profissional
 
----
+Serviços filtrados por profissional
 
-## 🚀 Funcionalidades
+Agenda baseada em disponibilidade semanal real
 
-### Área Administrativa (Django Admin)
-- Cadastro e gerenciamento de profissionais
-- Cadastro de serviços com preço e duração
-- Definição de disponibilidade semanal por profissional
-- Visualização e controle de agendamentos
-- Ativação e desativação de profissionais e serviços
+Geração dinâmica de horários disponíveis
 
-### Fluxo Público de Agendamento
-- Página inicial com chamada para agendamento
-- Escolha do profissional
-- Listagem de serviços vinculados ao profissional
-- Seleção de data
-- Geração dinâmica de horários disponíveis
-- Preenchimento dos dados do cliente (nome e WhatsApp)
-- Confirmação do agendamento
+Prevenção de conflitos de horário
 
-### Regras de Negócio
-- Impede seleção de horários fora da disponibilidade configurada
-- Bloqueia horários passados
-- Evita conflitos com outros agendamentos
-- Controle de concorrência para evitar overbooking
+Bloqueio de horários passados
 
----
+Registro de agendamentos no banco de dados
 
-## 🔒 Robustez da Agenda
+Confirmação via WhatsApp com mensagem pré-preenchida
 
-O sistema utiliza:
-- Validação de conflitos na geração dos horários
-- Validação adicional no momento da confirmação
-- Transações atômicas (`transaction.atomic`)
-- Bloqueio de concorrência com `select_for_update`
+Painel administrativo completo via Django Admin
 
-Essa abordagem garante que dois usuários não consigam reservar o mesmo horário simultaneamente.
+🧱 Arquitetura do Projeto
 
----
+O sistema foi estruturado seguindo o padrão Django Apps, separando responsabilidades por domínio:
 
-## 📲 Integração com WhatsApp
+rony-massoterapia/
+├── core/           # Páginas públicas e fluxo de agendamento
+├── professionals/  # Profissionais
+├── services/       # Serviços oferecidos
+├── schedule/       # Disponibilidade semanal
+├── bookings/       # Agendamentos
+├── notifications/  # Integrações (WhatsApp)
+├── config/         # Configurações globais
 
-Após a confirmação do agendamento:
-- Um registro é criado no banco de dados
-- O usuário é redirecionado automaticamente para o WhatsApp do profissional
-- A mensagem já vem pré-preenchida com:
-  - profissional
-  - serviço
-  - data e horário
-  - nome do cliente
-  - WhatsApp do cliente
 
-> O envio final da mensagem depende da ação do usuário, respeitando as limitações oficiais do WhatsApp.
+Essa separação facilita manutenção, escalabilidade e evolução do sistema.
 
----
+🧩 Modelagem de Dados (Resumo)
+Professional
 
-## 🧱 Stack Utilizada
+Nome
 
-- Python
-- Django
-- PostgreSQL
-- Bootstrap (templates server-side)
-- psycopg
-- python-dotenv
+Slug
 
----
+WhatsApp
 
-## 📁 Estrutura do Projeto
+Status ativo/inativo
 
-- `core` – páginas públicas e fluxo de agendamento
-- `professionals` – profissionais
-- `services` – serviços
-- `schedule` – disponibilidade semanal
-- `bookings` – agendamentos
-- `notifications` – notificações (WhatsApp)
+Service
 
----
+Nome
 
-## ⚙️ Como Executar Localmente (Windows)
+Preço (em centavos)
 
-### Pré-requisitos
-- Python 3.12+
-- PostgreSQL 14+
-- pgAdmin (opcional)
+Duração (minutos)
 
-### Passo a passo
+Relação com profissionais (ManyToMany)
 
-```bash
-# Criar ambiente virtual
+Status ativo/inativo
+
+WeeklyAvailability
+
+Profissional
+
+Dia da semana
+
+Horário de início
+
+Horário de término
+
+Booking
+
+Profissional
+
+Serviço
+
+Data/hora de início
+
+Data/hora de término
+
+Nome do cliente
+
+WhatsApp do cliente
+
+Status (pending, confirmed)
+
+Data de criação
+
+🔄 Fluxo de Agendamento
+
+Página inicial
+
+Escolha do profissional
+
+Escolha do serviço
+
+Escolha da data
+
+Visualização dos horários disponíveis
+
+Preenchimento dos dados do cliente
+
+Confirmação do agendamento
+
+Redirecionamento para WhatsApp do profissional
+
+O sistema impede:
+
+conflitos de horário
+
+seleção de horários fora da disponibilidade
+
+agendamentos em horários passados
+
+💬 Integração com WhatsApp
+
+Após a confirmação do agendamento, o sistema redireciona para o WhatsApp do profissional com uma mensagem automática contendo:
+
+Profissional escolhido
+
+Serviço
+
+Data e horário
+
+Nome do cliente
+
+WhatsApp do cliente
+
+⚠️ O envio respeita as limitações oficiais do WhatsApp, exigindo interação do usuário.
+
+🛠️ Tecnologias Utilizadas
+
+Python 3.12
+
+Django
+
+PostgreSQL
+
+psycopg
+
+Bootstrap
+
+HTML + CSS
+
+WhatsApp Web (via link oficial)
+
+⚙️ Como rodar o projeto localmente
+1. Clonar o repositório
+git clone https://github.com/seu-usuario/rony-massoterapia.git
+cd rony-massoterapia
+
+2. Criar e ativar o ambiente virtual
 python -m venv .venv
-.\.venv\Scripts\activate
+source .venv/bin/activate  # Linux/Mac
+.venv\Scripts\activate     # Windows
 
-# Instalar dependências
+3. Instalar dependências
 pip install -r requirements.txt
 
-# Criar arquivo de variáveis de ambiente
-copy .env.example .env
-# Edite o .env com suas credenciais
+4. Configurar variáveis de ambiente
 
-# Aplicar migrations
+Crie um arquivo .env baseado no .env.example.
+
+5. Rodar migrações
 python manage.py migrate
 
-# Criar superusuário
+6. Criar superusuário
 python manage.py createsuperuser
 
-# Iniciar servidor
+7. Rodar o servidor
 python manage.py runserver
+
+
 Acesse:
 
-Aplicação: http://127.0.0.1:8000/
+Site: http://127.0.0.1:8000/
 
 Admin: http://127.0.0.1:8000/admin/
 
-🧪 Estado Atual do Projeto
-Backend estruturado e funcional
+📌 Status do Projeto
 
-PostgreSQL configurado desde o início
+✔️ Backend funcional
+✔️ Agenda robusta
+✔️ Integração com WhatsApp
+✔️ Estrutura pronta para produção
+✔️ Ideal para uso comercial ou portfólio
 
-Models migrados
+🔮 Próximas melhorias planejadas
 
-Admin funcional
+Interface mais avançada com Bootstrap
 
-Agenda baseada em disponibilidade real
+Confirmação/cancelamento por status
 
-Controle de concorrência implementado
+Dashboard para profissionais
 
-Interface com Bootstrap
+Notificações adicionais
 
-Integração com WhatsApp funcionando
+Deploy em produção
 
-📌 Roadmap
-Tela de confirmação visual após o agendamento
+👤 Autor
 
-Cancelamento e remarcação de horários
+Desenvolvido por Marcelo Ribeiro Romano
+Projeto voltado para aprendizado avançado, portfólio e uso comercial.
 
-Janela de agendamento configurável (ex: até 30 dias)
+✅ Próximo passo
 
-Deploy em ambiente de produção com HTTPS
+Depois de colar isso no README.md, rode:
+
+git add README.md
+git commit -m "docs: add complete project README"
+git push
