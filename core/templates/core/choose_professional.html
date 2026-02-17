@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% block title %}Escolha o profissional{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h2 class="h4 fw-bold mb-0">Escolha o profissional</h2>
+  <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-sm">Voltar</a>
+</div>
+
+<div class="row g-3">
+  {% for p in professionals %}
+  <div class="col-12 col-md-6 col-lg-4">
+    <a href="{% url 'choose_service' p.slug %}" class="text-decoration-none text-dark">
+      <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card-body p-4">
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-primary-subtle d-flex align-items-center justify-content-center" style="width:56px;height:56px;">
+              <span class="fw-bold text-primary">{{ p.name|slice:":1" }}</span>
+            </div>
+            <div>
+              <div class="fw-semibold">{{ p.name }}</div>
+              <div class="small text-muted">Clique para ver os serviços</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
