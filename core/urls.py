@@ -7,4 +7,5 @@ urlpatterns = [
     path("agendar/<slug:professional_slug>/servicos/", views.choose_service, name="choose_service"),
     path("agendar/<slug:professional_slug>/servicos/<int:service_id>/horarios/", views.choose_slot, name="choose_slot"),
     path("agendar/confirmar/", views.confirm_booking, name="confirm_booking"),
+    path("sobre/", views.about, name="about"),
 ]

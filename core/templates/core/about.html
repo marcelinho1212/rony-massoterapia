@@ -1,0 +1,113 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Sobre nós{% endblock %}
+
+{% block content %}
+<div class="rm-hero mt-3">
+
+  <div class="d-flex align-items-end justify-content-between mb-4">
+    <div>
+      <h2 class="h4 fw-bold mb-1">Sobre nós</h2>
+      <div class="muted">Conheça quem está por trás do atendimento.</div>
+    </div>
+
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-sm btn-pill">Voltar</a>
+  </div>
+
+  <!-- BLOCO 1 - RONI -->
+  <div class="card card-soft rm-about-card mb-4">
+    <div class="rm-about-grid">
+      <div class="rm-about-photo-wrap">
+        <img
+          src="{% static 'core/img/roni3.png' %}"
+          alt="Roni Massoterapeuta"
+          class="rm-about-photo"
+        >
+      </div>
+
+      <div class="p-4 p-lg-5">
+        <span class="badge text-bg-light mb-3">Nossa história</span>
+
+        <h3 class="h2 fw-bold mb-2">Roni Massoterapeuta</h3>
+        <p class="rm-text mb-4">
+          
+Com formação técnica sólida e uma trajetória construída com disciplina e dedicação, iniciei minha caminhada na área da saúde e estética corporal há mais de 20 anos.
+
+Minha base vem da formação técnica e do compromisso com o aperfeiçoamento contínuo. Ao longo dessa jornada, me especializei em massoterapia estética corporal e facial, unindo técnicas terapêuticas tradicionais com abordagens modernas voltadas para performance física, recuperação muscular, bem-estar e estética avançada.
+
+Atuo com uma visão integrada do corpo — postura, mobilidade, estética e funcionalidade — porque acredito que saúde, beleza e desempenho caminham juntos.
+
+Durante minha trajetória profissional:
+
+* Já ministrei aulas de massoterapia e ajuste postural
+* Contribuí na formação de mais de 5.000 alunos ao longo dos anos
+* Atuo há mais de duas décadas na área estética corporal e física
+* Fui eleito, por duas vezes, campeão com Honra ao Mérito como Melhor Massoterapeuta da Região Mineira
+
+Meu trabalho vai além da técnica. Ele envolve leitura corporal, sensibilidade, precisão e estratégia terapêutica. Cada atendimento é pensado de forma personalizada, respeitando a individualidade e o objetivo de cada cliente — seja para estética, reabilitação, performance ou relaxamento profundo.
+
+Hoje, sigo atuando com excelência, profissionalismo e entrega total, oferecendo tratamentos que unem ciência, experiência e resultado real.
+
+Seu corpo é seu patrimônio.
+Meu compromisso é cuidar dele com técnica, respeito e alto padrão.
+        </p>
+
+        <div class="row g-3 mb-4">
+          <div class="col-12 col-md-6">
+            <div class="fw-semibold">Atendimento</div>
+            <div class="muted">Humanizado, com foco em resultado e conforto.</div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="fw-semibold">Localização</div>
+            <div class="muted">Limoeiro/Ipatinga • Sob agendamento</div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-pill">Agendar agora</a>
+          <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-pill">Voltar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCO 2 - CAROLINE (foto pequena à esquerda, texto à direita) -->
+  <div class="card card-soft rm-about-card">
+    <div class="rm-about-grid">
+      <div class="rm-about-photo-wrap">
+        <img
+          src="{% static 'core/img/carol4.png' %}"
+          alt="Caroline"
+          class="rm-about-photo"
+        >
+      </div>
+
+      <div class="p-4 p-lg-5">
+        <span class="badge text-bg-light mb-3">Equipe</span>
+
+        <h3 class="h2 fw-bold mb-2">Caroline Massoterapeuta</h3>
+        <p class="rm-text mb-4">
+          Responsável pelo suporte, organização e atendimento inicial aos clientes, garantindo uma experiência clara e profissional.
+        </p>
+
+        <div class="row g-3 mb-4">
+          <div class="col-12 col-md-6">
+            <div class="fw-semibold">Atuação</div>
+            <div class="muted">Recepção, organização e suporte ao cliente.</div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="fw-semibold">Contato</div>
+            <div class="muted">Via WhatsApp • Sob agendamento</div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-pill">Agendar agora</a>
+          <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-pill">Voltar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

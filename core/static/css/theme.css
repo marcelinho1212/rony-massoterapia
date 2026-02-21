@@ -1,0 +1,391 @@
+/* =========================
+   RONY MASSOTERAPIA - THEME
+   - Mantém Bootstrap
+   - Estilo escuro / premium
+========================= */
+
+:root{
+  --rm-bg: #0b0f14;          /* fundo geral */
+  --rm-bg-2: #0f1620;        /* variação */
+  --rm-surface: #121a24;     /* cards */
+  --rm-surface-2: #172231;   /* hover */
+  --rm-border: rgba(255,255,255,.10);
+
+  --rm-text: rgba(255,255,255,.92);
+  --rm-muted: rgba(255,255,255,.68);
+
+  --rm-accent: #4aa3ff;
+  --rm-accent-2: #2f80ed;
+
+  --rm-shadow: 0 18px 55px rgba(0,0,0,.45);
+  --rm-radius: 18px;
+
+  --rm-navbar: #2f343a;      /* cor do navbar como o ícone */
+}
+
+/* ===== Base (aplica SEM precisar de classe no body) ===== */
+html, body{
+  height: 100%;
+}
+
+body{
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--rm-text);
+  min-height: 100vh;
+
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(74,163,255,.14), transparent 55%),
+    radial-gradient(800px 500px at 85% 0%, rgba(255,255,255,.06), transparent 55%),
+    linear-gradient(180deg, var(--rm-bg-2), var(--rm-bg));
+}
+
+/* Texto muted (você usa class="muted" nos templates) */
+.muted,
+.rm-muted{
+  color: var(--rm-muted) !important;
+}
+
+/* ===== Navbar escura ===== */
+.rm-navbar{
+  background: var(--rm-navbar);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+/* Logo controlada */
+.rm-brand-logo{
+  height: 34px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ===== Footer ===== */
+.rm-footer{
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.15);
+}
+
+/* ===== Pills ===== */
+.btn-pill,
+.rm-btn-pill{
+  border-radius: 999px !important;
+}
+
+/* ===== Cards ===== */
+.card-soft,
+.rm-card{
+  background: rgba(18, 26, 36, .82);
+  border: 1px solid var(--rm-border);
+  border-radius: var(--rm-radius);
+  box-shadow: var(--rm-shadow);
+  backdrop-filter: blur(8px);
+}
+
+.card-soft:hover,
+.rm-card:hover{
+  background: rgba(23, 34, 49, .86);
+}
+
+/* ===== Badge claro no tema escuro ===== */
+.badge.text-bg-light,
+.rm-badge{
+  background: rgba(255,255,255,0.10) !important;
+  color: rgba(255,255,255,0.92) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+}
+
+/* ===== Botão primário (sem quebrar bootstrap) ===== */
+.btn-primary{
+  background: linear-gradient(180deg, var(--rm-accent), var(--rm-accent-2));
+  border: 0 !important;
+  box-shadow: 0 10px 30px rgba(74,163,255,.25);
+  font-weight: 700;
+}
+.btn-primary:hover{
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+/* Outline em dark */
+.btn-outline-secondary,
+.btn-outline-light{
+  border-color: rgba(255,255,255,.18) !important;
+  color: rgba(255,255,255,.88) !important;
+}
+.btn-outline-secondary:hover,
+.btn-outline-light:hover{
+  background: rgba(255,255,255,.08) !important;
+}
+
+/* Inputs no tema escuro */
+.form-control, .form-select{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: var(--rm-text) !important;
+}
+.form-control::placeholder{
+  color: rgba(255,255,255,.45);
+}
+.form-control:focus, .form-select:focus{
+  border-color: rgba(74,163,255,.55) !important;
+  box-shadow: 0 0 0 .25rem rgba(74,163,255,.15) !important;
+}
+
+/* HR */
+hr{
+  border-color: rgba(255,255,255,.10) !important;
+  opacity: 1;
+}
+
+/* ===== Home / Split (Roni + Serviços) ===== */
+.rm-hero{
+  padding-top: 14px;
+}
+
+/* Bloco da direita: 2 colunas no desktop */
+.rm-split{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+.rm-split-left,
+.rm-split-right{
+  position: relative;
+  overflow: hidden;
+}
+
+/* imagem sempre bonita */
+.rm-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* separador */
+.rm-split-right{
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+/* caso use imagem dos serviços dentro */
+.rm-services-img{
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+}
+
+/* ===== Responsivo: mobile bem alinhado ===== */
+@media (max-width: 991.98px){
+
+  /* container não ficar “espremido” no topo */
+  .rm-hero{
+    padding-top: 10px;
+  }
+
+  /* navbar com menos altura */
+  .navbar{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  /* logo menor e alinhada */
+  .rm-brand-logo{
+    height: 28px;
+    max-width: 150px;
+  }
+
+  /* botões do topo menores no mobile */
+  .navbar .btn{
+    padding: .35rem .65rem;
+    font-size: .9rem;
+  }
+
+  /* split vira 1 coluna */
+  .rm-split{
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .rm-split-right{
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* alturas mais compactas e bonitas */
+  .rm-split-left{
+    height: 320px;
+  }
+  .rm-split-right{
+    height: auto;
+  }
+}
+
+/* ===== Se você ainda usar carousel em alguma página ===== */
+.carousel-inner img{
+  object-fit: cover;
+  max-height: 420px;
+}
+/* Brand em texto (navbar) PARTE "RONI"*/ 
+.rm-brand-text {
+  font-family: 'Playfair Display', serif; /* Nova fonte aplicada */
+  font-weight: 700;
+  font-size: 1.5rem; /* Aumentei para destacar */
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: opacity .2s ease;
+  display: flex;
+  align-items: baseline; /* Alinha o texto menor na base do maior */
+}
+
+/* Parte "Massoterapeuta" */
+.rm-brand-text span {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: italic; /* O itálico dá o toque "premium" */
+  color: rgba(255,255,255,0.75); /* Um pouco mais suave */
+  font-size: 1.5rem; /* Tamanho menor para dar contraste */
+  margin-left: 5px;
+}
+
+/* Hover */
+.rm-brand-text:hover {
+  opacity: 0.9;
+  color: #ffffff;
+}
+/* Cards do Bootstrap em dark dentro do tema */
+.rm-body .card,
+.rm-body .modal-content,
+.rm-body .dropdown-menu {
+  background: var(--rm-surface) !important;
+  color: var(--rm-text) !important;
+  border: 1px solid var(--rm-border) !important;
+}
+
+/* Qualquer coisa que esteja com bg branco/clarinho */
+.rm-body .bg-white,
+.rm-body .text-bg-light,
+.rm-body .bg-light,
+.rm-body .bg-body,
+.rm-body .bg-body-tertiary {
+  background: var(--rm-surface) !important;
+  color: var(--rm-text) !important;
+}
+/* --- FIX: Bootstrap modal não clicável (overlay/pointer) --- */
+.modal,
+.modal-backdrop{
+  pointer-events: auto !important;
+}
+
+.modal-dialog,
+.modal-content{
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 1060; /* padrão do bootstrap modal */
+}
+
+/* garante que o backdrop não fique acima do modal */
+.modal-backdrop{
+  z-index: 1050 !important; /* padrão */
+}
+.modal { z-index: 1060 !important; }
+.modal-backdrop { z-index: 1050 !important; }
+.modal, .modal * { pointer-events: auto !important; }
+/* ===== FIX DEFINITIVO: Modal clicável (stacking context/backdrop-filter) ===== */
+
+/* Quando modal abre, remove blur/transform que pode criar overlay “fantasma” */
+body.modal-open .card-soft,
+body.modal-open .rm-card,
+body.modal-open [style*="backdrop-filter"],
+body.modal-open * {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* força o modal sempre acima */
+.modal {
+  position: fixed !important;
+  z-index: 20000 !important;
+}
+.modal-backdrop {
+  position: fixed !important;
+  z-index: 19990 !important;
+}
+
+/* garante que nada capture o clique por cima */
+.modal, .modal * { pointer-events: auto !important; }
+
+/* opcional: se algum container estiver criando camada acima */
+body.modal-open main,
+body.modal-open nav,
+body.modal-open footer {
+  position: relative;
+  z-index: 1;
+}
+/* =========================
+   ABOUT: foto pequena à esquerda + texto à direita
+========================= */
+
+.rm-about-grid{
+  display: grid;
+  grid-template-columns: 200px 1fr; /* foto pequena + texto */
+  gap: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.rm-about-grid--reverse{
+  grid-template-columns: 1fr 240px; /* se quiser inverter no desktop */
+}
+
+/* container da foto */
+.rm-about-photo-wrap{
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  transform: scale(1.0);
+}
+
+/* se estiver reverse, borda vai pro outro lado */
+.rm-about-grid--reverse .rm-about-photo-wrap{
+  border-right: 0;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+/* imagem sempre “boa”, mas sem virar banner gigante */
+.rm-about-photo{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;        /* mantém bonito */
+  object-position: top;     /* evita cortar o rosto */
+}
+
+/* limita a altura do card (impede ocupar a tela toda) */
+.rm-about-card{
+  overflow: hidden;
+}
+.rm-about-card .rm-about-photo-wrap{
+  min-height: 320px;
+  max-height: 360px;
+}
+
+/* mobile: empilha e reduz ainda mais */
+@media (max-width: 991.98px){
+  .rm-about-grid,
+  .rm-about-grid--reverse{
+    grid-template-columns: 1fr;
+  }
+
+  .rm-about-photo-wrap{
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    min-height: 220px;
+    max-height: 260px;
+    transform: scale(1.7);
+  }
+}

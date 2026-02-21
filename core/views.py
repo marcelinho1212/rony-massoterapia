@@ -11,6 +11,10 @@ from professionals.models import Professional
 from services.models import Service
 from schedule.models import WeeklyAvailability
 from bookings.models import Booking
+from django.shortcuts import render
+
+def about(request):
+    return render(request, "core/about.html")
 
 
 def home(request):

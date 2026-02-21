@@ -2,30 +2,43 @@
 {% block title %}Escolha o profissional{% endblock %}
 
 {% block content %}
-<div class="d-flex align-items-center justify-content-between mb-3">
-  <h2 class="h4 fw-bold mb-0">Escolha o profissional</h2>
-  <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-sm">Voltar</a>
+<div class="d-flex align-items-end justify-content-between mt-2 mb-3">
+  <div>
+    <h2 class="h4 fw-bold mb-1">Escolha o profissional</h2>
+    <div class="muted">Selecione com quem deseja agendar.</div>
+  </div>
+  <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-sm btn-pill">Voltar</a>
 </div>
 
-<div class="row g-3">
+<div class="row g-3 g-lg-4">
   {% for p in professionals %}
-  <div class="col-12 col-md-6 col-lg-4">
-    <a href="{% url 'choose_service' p.slug %}" class="text-decoration-none text-dark">
-      <div class="card shadow-sm border-0 rounded-4 h-100">
-        <div class="card-body p-4">
-          <div class="d-flex align-items-center gap-3">
-            <div class="rounded-circle bg-primary-subtle d-flex align-items-center justify-content-center" style="width:56px;height:56px;">
-              <span class="fw-bold text-primary">{{ p.name|slice:":1" }}</span>
+    <div class="col-12 col-md-6">
+      <a class="text-decoration-none" href="{% url 'choose_service' p.slug %}">
+        <div class="card card-soft h-100">
+          <div class="card-body p-4 d-flex gap-3 align-items-center">
+            <div class="rounded-circle bg-primary-subtle d-flex align-items-center justify-content-center"
+                 style="width:56px;height:56px;">
+              <span class="fw-bold text-primary">
+                {{ p.name|slice:":1"|upper }}
+              </span>
             </div>
-            <div>
+
+            <div class="flex-grow-1">
               <div class="fw-semibold">{{ p.name }}</div>
-              <div class="small text-muted">Clique para ver os serviços</div>
+              <div class="small muted">Agendamento rápido • Confirmação via WhatsApp</div>
             </div>
+
+            <div class="btn btn-outline-primary btn-sm btn-pill">Selecionar</div>
           </div>
         </div>
+      </a>
+    </div>
+  {% empty %}
+    <div class="col-12">
+      <div class="alert alert-warning">
+        Nenhum profissional disponível no momento.
       </div>
-    </a>
-  </div>
+    </div>
   {% endfor %}
 </div>
 {% endblock %}

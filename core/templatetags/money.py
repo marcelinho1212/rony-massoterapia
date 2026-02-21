@@ -6,8 +6,9 @@ register = template.Library()
 def brl_from_cents(value):
     try:
         cents = int(value)
-    except (TypeError, ValueError):
-        return "R$ 0,00"
-
-    reais = cents / 100
-    return f"R$ {reais:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        reais = cents / 100
+        # formata 1234.5 -> "1.234,50"
+        s = f"{reais:,.2f}"
+        return s.replace(",", "X").replace(".", ",").replace("X", ".")
+    except Exception:
+        return value
