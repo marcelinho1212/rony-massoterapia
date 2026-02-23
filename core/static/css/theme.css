@@ -24,19 +24,24 @@
 }
 
 /* ===== Base (aplica SEM precisar de classe no body) ===== */
-html, body{
-  height: 100%;
-}
-
-body{
+.rm-body{
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--rm-text);
   min-height: 100vh;
+  
+  /* Flexbox para empurrar o footer pro final da página */
+  display: flex;
+  flex-direction: column;
 
   background:
     radial-gradient(900px 500px at 15% 10%, rgba(74,163,255,.14), transparent 55%),
     radial-gradient(800px 500px at 85% 0%, rgba(255,255,255,.06), transparent 55%),
     linear-gradient(180deg, var(--rm-bg-2), var(--rm-bg));
+}
+
+/* Faz o conteúdo principal preencher o espaço vazio */
+main.container {
+  flex: 1;
 }
 
 /* Texto muted (você usa class="muted" nos templates) */
@@ -361,7 +366,7 @@ body.modal-open footer {
 
 /* ajuste fino opcional para a Carol (se precisar) */
 .rm-about-photo--carol{
-  object-position: center 20%;
+  object-position: center 0%;
 }
 
 /* impede quebra feia do título */
