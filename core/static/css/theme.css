@@ -392,46 +392,4 @@ body.modal-open footer {
   }
 }
 /*Atualização 24/02/2026*/
-/* --- ADIÇÕES SEGURAS DE IDENTIDADE --- ---> alteração 24/02/26 - 17:25*/ 
-.rm-brand-text {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #ffffff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
 
-.rm-brand-text span {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-style: italic;
-  color: rgba(255,255,255,0.75);
-  font-size: 1.3rem;
-  margin-left: 6px;
-}
-
-/* Lista de serviços em 2 colunas */
-.rm-services-list ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px 15px;
-}
-
-.rm-services-list li {
-  font-size: 0.9rem;
-  color: var(--rm-muted);
-  display: flex;
-  align-items: center;
-}
-
-.rm-services-list li::before {
-  content: "•";
-  color: var(--rm-accent);
-  font-weight: bold;
-  margin-right: 8px;
-}
