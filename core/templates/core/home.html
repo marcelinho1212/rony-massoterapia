@@ -3,112 +3,90 @@
 {% block title %}Início{% endblock %}
 
 {% block content %}
-
-<section class="py-4 py-lg-5">
+<section class="py-2 py-lg-4">
   <div class="row align-items-stretch g-4">
 
-    <!-- COLUNA 1: Hero / Texto -->
     <div class="col-lg-6 order-1 order-lg-1">
-      <div class="card card-soft p-4 p-lg-5 h-100">
-        <span class="badge text-bg-light align-self-start mb-3">Atendimento profissional</span>
+      <div class="card card-soft p-4 p-lg-5 h-100 d-flex flex-column justify-content-center">
+        <span class="badge text-bg-light align-self-start mb-3 px-3 py-2 rounded-pill">Atendimento profissional</span>
 
         <h1 class="display-6 fw-bold mb-3">
           Agende sua sessão de massoterapia com facilidade
         </h1>
 
-        <p class="muted mb-4">
+        <p class="muted mb-4 fs-5">
           Escolha o profissional, selecione o serviço e encontre um horário disponível em poucos cliques.
           A confirmação é enviada via WhatsApp.
         </p>
 
-        <div class="d-flex flex-column flex-sm-row gap-2">
-          <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-lg btn-pill">
+        <div class="d-flex flex-column flex-sm-row gap-3 mb-4">
+          <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-lg btn-pill shadow-sm">
             Marque sua sessão
           </a>
-          
         </div>
 
-        <hr class="my-4">
+        <hr class="my-3">
 
         <div class="row g-3 small">
           <div class="col-12 col-sm-6">
-            <div class="fw-semibold">✅ Horários reais</div>
-            <div class="muted">Baseado na disponibilidade semanal</div>
+            <div class="fw-semibold text-white d-flex align-items-center gap-2">
+              <i class="bi bi-clock-history text-primary"></i> Horários reais
+            </div>
+            <div class="muted ms-4">Baseado na disponibilidade semanal</div>
           </div>
           <div class="col-12 col-sm-6">
-            <div class="fw-semibold">✅ Sem conflito</div>
-            <div class="muted">Bloqueio de horários já reservados</div>
+            <div class="fw-semibold text-white d-flex align-items-center gap-2">
+              <i class="bi bi-calendar-check text-primary"></i> Sem conflito
+            </div>
+            <div class="muted ms-4">Bloqueio de horários já reservados</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- COLUNA 2: Card Roni + Serviços -->
     <div class="col-lg-6 order-2 order-lg-2">
       <div class="card card-soft overflow-hidden h-100">
+        <div class="row g-0 h-100 flex-column flex-md-row">
 
-        <!-- MOBILE: imagem do Roni em cima, serviços embaixo -->
-        <!-- DESKTOP: lado a lado -->
-        <div class="row g-0 h-100">
-
-          <!-- FOTO RONI -->
-          <div class="col-12 col-md-6">
-            <div class="h-100">
-              <img
-                src="{% static 'core/img/roni3.png' %}"
-                alt="Roni Massoterapeuta"
-                class="w-100"
-                style="display:block; object-fit: cover; height: 100%; min-height: 260px;"
-              >
-            </div>
+          <div class="col-12 col-md-5 col-lg-6 rm-hero-img-wrap">
+            <img
+              src="{% static 'core/img/roni3.png' %}"
+              alt="Roni Massoterapeuta"
+              class="w-100 h-100 object-fit-cover"
+              style="min-height: 280px; display: block; object-position: top center;"
+            >
           </div>
 
-          <!-- SERVIÇOS -->
-          <div class="col-12 col-md-6">
-            <div class="p-4 p-lg-4 h-100 d-flex flex-column">
-              <!--<div class="small text-uppercase muted mb-1">Conheça meus</div>
-              <h2 class="h4 fw-bold mb-3">Serviços</h2>
+          <div class="col-12 col-md-7 col-lg-6 d-flex flex-column">
+            <div class="p-4 flex-grow-1 d-flex flex-column">
+              <div class="text-uppercase small fw-bold text-primary mb-1 tracking-wide">Conheça meus</div>
+              <h2 class="h3 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Serviços</h2>
 
-              <!-- Se você preferir a imagem "servicos.png" em vez de lista -->
-             <!--<img
-                src="{% static 'core/img/servicos.png' %}"
-                alt="Lista de serviços"
-                class="img-fluid rounded-3 mb-3"
-                style="max-height: 520px; object-fit: contain;"
-              > -->
-              <div class="rm-services-wrapper p-4">
-  <div class="text-uppercase small fw-bold text-muted mb-1">CONHEÇA MEUS</div>
-  <h2 class="h3 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Serviços</h2>
+              <ul class="rm-services-grid mb-4">
+                <li>Aromaterapia</li>
+                <li>Acupuntura</li>
+                <li>Reflexologia</li>
+                <li>Ventosaterapia</li>
+                <li>Drenagem Linfática</li>
+                <li>Massoterapia</li>
+                <li>Liberação Miofascial</li>
+                <li>Quiropraxia</li>
+                <li>Pedra Quente</li>
+                <li>Fisiotrainer</li>
+                <li>Shiatsu</li>
+                <li>Relaxante</li>
+                <li>Crochetagem</li>
+                <li>Corrente russa</li>
+                <li>Cone Chinês</li>
+                <li>Lomi Lomi</li>
+                <li>Sensitiva</li>
+                <li>Banho Turco</li>
+                <li>Esfoliação</li>
+                <li>Hidratação</li>
+              </ul>
 
-  <div class="rm-services-list">
-    <ul>
-      <li>Aromaterapia</li>
-      <li>Acupuntura</li>
-      <li>Reflexologia</li>
-      <li>Ventosaterapia</li>
-      <li>Drenagem Linfática</li>
-      <li>Massoterapia</li>
-      <li>Liberação Miofascial</li>
-      <li>Quiropraxia</li>
-      <li>Pedra Quente</li>
-      <li>Fisiotrainer</li>
-      <li>Shiatsu</li>
-      <li>Massagem Relaxante</li>
-      <li>Crochetagem</li>
-      <li>Corrente russa</li>
-      <li>Cone Chinês</li>
-      <li>Lomi Lomi Sensorial</li>
-      <li>Massoterapia Sensitiva</li>
-      <li>Shiatsu Drenante</li>
-      <li>Banho Turco</li>
-      <li>Esfoliação Corporal</li>
-      <li>Hidratação</li>
-    </ul>
-  </div>
-</div>
-
-              <div class="mt-auto">
-                <a href="{% url 'choose_professional' %}" class="btn btn-outline-secondary btn-sm btn-pill w-100">
+              <div class="mt-auto pt-3 border-top border-secondary-subtle">
+                <a href="{% url 'choose_professional' %}" class="btn btn-outline-light btn-sm btn-pill w-100 fw-semibold">
                   Ver horários disponíveis
                 </a>
               </div>
@@ -116,18 +94,9 @@
           </div>
 
         </div>
-
       </div>
-
-      <!--<p class="text-center small muted mt-3 mb-0">
-        *Fotos reais do profissional e serviços.
-      </p>-->
     </div>
 
   </div>
 </section>
-
 {% endblock %}
-
-
-<!--- alteração 24/02/26 - 17:25 -->
