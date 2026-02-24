@@ -1,4 +1,5 @@
-{% extends "core/base.html" %}
+<!--- Atualizacao 24/02/26 - 17:25 -->
+{% extends "core/base.html" %}  
 {% load static %}
 {% block title %}Início{% endblock %}
 
@@ -7,51 +8,49 @@
 <section class="py-4 py-lg-5">
   <div class="row align-items-stretch g-4">
 
-    <!-- COLUNA 1: Hero / Texto -->
     <div class="col-lg-6 order-1 order-lg-1">
-      <div class="card card-soft p-4 p-lg-5 h-100">
-        <span class="badge text-bg-light align-self-start mb-3">Atendimento profissional</span>
+      <div class="card card-soft p-4 p-lg-5 h-100 position-relative" style="overflow: hidden;">
+        <img src="{% static 'core/img/icone.png' %}" alt="" style="position: absolute; right: -20px; top: -20px; width: 250px; opacity: 0.04; filter: brightness(0) invert(1); transform: rotate(-15deg); pointer-events: none;">
+        
+        <div class="position-relative">
+          <span class="badge text-bg-light align-self-start mb-3">Atendimento profissional</span>
 
-        <h1 class="display-6 fw-bold mb-3">
-          Agende sua sessão de massoterapia com facilidade
-        </h1>
+          <h1 class="display-6 fw-bold mb-3" style="font-family: 'Playfair Display', serif;">
+            Agende sua sessão de <span style="color: var(--rm-accent);">massoterapia</span> com facilidade
+          </h1>
 
-        <p class="muted mb-4">
-          Escolha o profissional, selecione o serviço e encontre um horário disponível em poucos cliques.
-          A confirmação é enviada via WhatsApp.
-        </p>
+          <p class="muted mb-4 fs-5">
+            Escolha o profissional, selecione o serviço e encontre um horário disponível em poucos cliques.
+            A confirmação é enviada via WhatsApp.
+          </p>
 
-        <div class="d-flex flex-column flex-sm-row gap-2">
-          <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-lg btn-pill">
-            Marque sua sessão
-          </a>
-          
-        </div>
-
-        <hr class="my-4">
-
-        <div class="row g-3 small">
-          <div class="col-12 col-sm-6">
-            <div class="fw-semibold">✅ Horários reais</div>
-            <div class="muted">Baseado na disponibilidade semanal</div>
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-lg btn-pill">
+              Marque sua sessão
+            </a>
           </div>
-          <div class="col-12 col-sm-6">
-            <div class="fw-semibold">✅ Sem conflito</div>
-            <div class="muted">Bloqueio de horários já reservados</div>
+
+          <hr class="my-4">
+
+          <div class="row g-3 small">
+            <div class="col-12 col-sm-6">
+              <div class="fw-semibold">✅ Horários reais</div>
+              <div class="muted">Baseado na disponibilidade semanal</div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="fw-semibold">✅ Sem conflito</div>
+              <div class="muted">Bloqueio de horários já reservados</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- COLUNA 2: Card Roni + Serviços -->
     <div class="col-lg-6 order-2 order-lg-2">
       <div class="card card-soft overflow-hidden h-100">
 
-        <!-- MOBILE: imagem do Roni em cima, serviços embaixo -->
-        <!-- DESKTOP: lado a lado -->
         <div class="row g-0 h-100">
 
-          <!-- FOTO RONI -->
           <div class="col-12 col-md-6">
             <div class="h-100">
               <img
@@ -63,49 +62,29 @@
             </div>
           </div>
 
-          <!-- SERVIÇOS -->
           <div class="col-12 col-md-6">
             <div class="p-4 p-lg-4 h-100 d-flex flex-column">
-              <!--<div class="small text-uppercase muted mb-1">Conheça meus</div>
-              <h2 class="h4 fw-bold mb-3">Serviços</h2>
+              <div class="rm-services-wrapper">
+                <div class="text-uppercase small fw-bold text-muted mb-1">CONHEÇA MEUS</div>
+                <h2 class="h3 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Serviços</h2>
 
-              <!-- Se você preferir a imagem "servicos.png" em vez de lista -->
-             <!--<img
-                src="{% static 'core/img/servicos.png' %}"
-                alt="Lista de serviços"
-                class="img-fluid rounded-3 mb-3"
-                style="max-height: 520px; object-fit: contain;"
-              > -->
-              <div class="rm-services-wrapper p-4">
-  <div class="text-uppercase small fw-bold text-muted mb-1">CONHEÇA MEUS</div>
-  <h2 class="h3 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Serviços</h2>
-
-  <div class="rm-services-list">
-    <ul>
-      <li>Aromaterapia</li>
-      <li>Acupuntura</li>
-      <li>Reflexologia</li>
-      <li>Ventosaterapia</li>
-      <li>Drenagem Linfática</li>
-      <li>Massoterapia</li>
-      <li>Liberação Miofascial</li>
-      <li>Quiropraxia</li>
-      <li>Pedra Quente</li>
-      <li>Fisiotrainer</li>
-      <li>Shiatsu</li>
-      <li>Massagem Relaxante</li>
-      <li>Crochetagem</li>
-      <li>Corrente russa</li>
-      <li>Cone Chinês</li>
-      <li>Lomi Lomi Sensorial</li>
-      <li>Massoterapia Sensitiva</li>
-      <li>Shiatsu Drenante</li>
-      <li>Banho Turco</li>
-      <li>Esfoliação Corporal</li>
-      <li>Hidratação</li>
-    </ul>
-  </div>
-</div>
+                <div class="rm-services-list mb-4">
+                  <ul>
+                    <li>Aromaterapia</li>
+                    <li>Acupuntura</li>
+                    <li>Reflexologia</li>
+                    <li>Ventosaterapia</li>
+                    <li>Drenagem Linfática</li>
+                    <li>Massoterapia</li>
+                    <li>Liberação Miofascial</li>
+                    <li>Quiropraxia</li>
+                    <li>Pedra Quente</li>
+                    <li>Fisiotrainer</li>
+                    <li>Shiatsu</li>
+                    <li>Cone Chinês</li>
+                  </ul>
+                </div>
+              </div>
 
               <div class="mt-auto">
                 <a href="{% url 'choose_professional' %}" class="btn btn-outline-secondary btn-sm btn-pill w-100">
@@ -118,10 +97,6 @@
         </div>
 
       </div>
-
-      <!--<p class="text-center small muted mt-3 mb-0">
-        *Fotos reais do profissional e serviços.
-      </p>-->
     </div>
 
   </div>
