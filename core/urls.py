@@ -8,4 +8,5 @@ urlpatterns = [
     path("agendar/<slug:professional_slug>/servicos/<int:service_id>/horarios/", views.choose_slot, name="choose_slot"),
     path("agendar/confirmar/", views.confirm_booking, name="confirm_booking"),
     path("sobre/", views.about, name="about"),
+    path("cancelar/<uuid:token>/", views.cancel_booking, name="cancel_booking"),
 ]

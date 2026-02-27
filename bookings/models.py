@@ -4,11 +4,14 @@ from django.db import models
 from django.db import models
 from professionals.models import Professional
 from services.models import Service
+import uuid
+from django.utils import timezone
+from datetime import timedelta
 
 class Booking(models.Model):
     STATUS_CHOICES = (
         ("pending", "Pending"),
-        ("confirmed", "Confirmed"),
+        ("confirmed", "Confirmed"),             
         ("cancelled", "Cancelled"),
     )
 
@@ -22,7 +25,13 @@ class Booking(models.Model):
     end = models.DateTimeField()
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="confirmed")
+    #função de cancelamento de atendimento
+    cancel_token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def can_cancel(self):
+        limite = self.start - timedelta(hours = 6)
+        return timezone.now() <= limite
 
     def __str__(self):
         return f"{self.customer_name} - {self.service.name} - {self.start:%Y-%m-%d %H:%M}"

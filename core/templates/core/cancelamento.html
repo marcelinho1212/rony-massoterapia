@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+{% block title %}Cancelado{% endblock %}
+
+{% block content %}
+<div class="card card-soft p-5 text-center">
+  <h2 class="fw-bold mb-3">Agendamento cancelado com sucesso</h2>
+
+  <p class="muted">
+    Seu horário foi liberado.
+  </p>
+
+  <a href="{% url 'home' %}" class="btn btn-primary btn-pill mt-4">
+    Voltar para o início
+  </a>
+</div>
+{% endblock %}

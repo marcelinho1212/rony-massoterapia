@@ -12,6 +12,7 @@ from services.models import Service
 from schedule.models import WeeklyAvailability
 from bookings.models import Booking
 from django.shortcuts import render
+from django.urls import reverse
 
 def about(request):
     return render(request, "core/about.html")
@@ -168,6 +169,7 @@ def confirm_booking(request):
             end=end,
             status="confirmed",
         )
+        cancel_link = request.build_absolute_uri(reverse("cancel_booking", args=[booking.cancel_token]))
 
     # 📲 WhatsApp
     number = "".join(
@@ -175,13 +177,36 @@ def confirm_booking(request):
     )
 
     msg = (
-        f"Novo agendamento ✅\n\n"
-        f"Profissional: {professional.name}\n"
-        f"Serviço: {service.name}\n"
-        f"Data/Hora: {booking.start:%d/%m/%Y %H:%M}\n"
-        f"Cliente: {booking.customer_name}\n"
-        f"WhatsApp do cliente: {booking.customer_whatsapp}\n"
-    )
+    f"Novo agendamento confirmado ✅\n\n"
+    f"Profissional: {professional.name}\n"
+    f"Serviço: {service.name}\n"
+    f"Data/Hora: {booking.start:%d/%m/%Y %H:%M}\n"
+    f"Cliente: {booking.customer_name}\n"
+    f"WhatsApp do cliente: {booking.customer_whatsapp}\n\n"
+    f"---\n\n"
+    f"Caso o cliente precise cancelar ou reagendar,\n"
+    f"ele pode fazer isso pelo link abaixo:\n\n"
+    f"{cancel_link}\n\n"
+    f"Cancelamentos devem ser feitos com no mínimo 6 horas de antecedência."
+)
 
     url = f"https://wa.me/{number}?text={quote(msg)}"
     return redirect(url)
+
+
+def cancel_booking(request, token):
+    booking = get_object_or_404(Booking, cancel_token=token)
+
+    #se já estiver cancelado
+    if booking.status == "cancelled":
+        return render(request, "core/ja_cancelado.html")
+    
+    #verifica regra das 6 horas
+    if not booking.can_cancel():
+        return render(request, "core/prazo_expirado.html",{"booking": booking })
+    
+    #cancela
+    booking.status = "cancelled"
+    booking.save()
+
+    return render (request, "core/sucesso.html", {"booking": booking })
