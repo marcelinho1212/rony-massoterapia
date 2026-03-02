@@ -9,6 +9,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         services_data = [
             "Acupuntura",
+            "Drenagem Linfática",
             "Ventosaterapia",
             "Massoterapia",
             "Liberação Miofascial",
@@ -27,7 +28,7 @@ class Command(BaseCommand):
             "Hidratação",
         ]
 
-        DEFAULT_PRICE_CENTS = 15000  # R$ 150,00
+        DEFAULT_PRICE_CENTS = 16000  # R$ 160,00
         DEFAULT_DURATION_MINUTES = 60
 
         professionals = Professional.objects.filter(is_active=True)
@@ -69,3 +70,22 @@ class Command(BaseCommand):
                 f"Seed concluído. {created_count} novo(s) serviço(s) criado(s)."
             )
         )
+
+      #Ventosaterapia
+      #Drenagem Linfática
+      #Massoterapia
+      #Liberação Miofascial
+      #Quiropraxia
+      #Pedra Quente
+      #Fisiotrainer
+      #Shiatsu
+      #Massagem Relaxante
+      #Crochetagem
+      #Corrente russa
+      #Cone Chinês
+      #Lomi Lomi Sensorial
+      #Massoterapia Sensitiva
+      #Shiatsu Drenante
+      #Banho Turco
+      #Esfoliação Corporal
+      #Hidratação

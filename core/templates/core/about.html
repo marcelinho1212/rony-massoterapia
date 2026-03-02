@@ -3,116 +3,76 @@
 {% block title %}Sobre nós{% endblock %}
 
 {% block content %}
-<div class="rm-hero mt-3">
 
-  <div class="d-flex align-items-end justify-content-between mb-4">
-    <div>
-      <h2 class="h4 fw-bold mb-1">Sobre nós</h2>
-      <div class="muted">Conheça quem está por trás do atendimento.</div>
+<section class="rm-about-clean">
+
+  <div class="container">
+
+    <!-- RONI -->
+    <div class="rm-profile-row">
+
+      <div class="rm-profile-photo">
+        <img src="{% static 'core/img/roni3.png' %}" alt="Roni Massoterapeuta">
+      </div>
+
+      <div class="rm-profile-info">
+        <span class="rm-label">Especialista</span>
+        <h2>Roni Massoterapeuta</h2>
+        <div class="rm-divider"></div>
+
+        <p>
+          Há mais de 20 anos atuando na área de saúde e estética corporal,
+          unindo técnicas terapêuticas tradicionais com abordagens modernas
+          voltadas para recuperação muscular, performance e bem-estar profundo.
+        </p>
+
+        <div class="rm-badges">
+          <span>20+ anos</span>
+          <span>Recuperação muscular</span>
+          <span>Estética avançada</span>
+        </div>
+
+        <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-pill">
+          Agendar atendimento
+        </a>
+      </div>
+
     </div>
 
-    <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-sm btn-pill">Voltar</a>
-  </div>
+    <!-- CAROLINE -->
+    <div class="rm-profile-row reverse">
 
-  <!-- CARD 1 - RONI -->
-  <div class="card card-soft rm-about-card mb-4">
-    <div class="rm-about-grid">
-      <div class="rm-about-photo-wrap">
-        <img
-          src="{% static 'core/img/roni3.png' %}"
-          alt="Roni Massoterapeuta"
-          class="rm-about-photo"
-        >
+      <div class="rm-profile-photo">
+        <img src="{% static 'core/img/carol5.png' %}" alt="Caroline">
       </div>
 
-      <div class="p-4 p-lg-5">
-        <span class="badge text-bg-light mb-3">Nossa história</span>
+      <div class="rm-profile-info">
+        <span class="rm-label">Estética Corporal</span>
+        <h2>Caroline</h2>
+        <div class="rm-divider"></div>
 
-        <h3 class="rm-about-title fw-bold mb-2">Roni Massoterapeuta</h3>
+        <p>
+          Técnica em Estética com atendimento humanizado e foco em resultados
+          visíveis. Atua com drenagem linfática, modeladora e relaxante,
+          adaptando cada sessão às necessidades do cliente.
+        </p>
 
-        <div class="rm-about-text mb-4">
-          <p class="mb-3">
-            Com formação técnica sólida e uma trajetória construída com disciplina e dedicação, iniciei minha caminhada
-            na área da saúde e estética corporal há mais de 20 anos.
-          </p>
-
-          <p class="mb-3">
-            Ao longo dessa jornada, me especializei em massoterapia estética corporal e facial, unindo técnicas terapêuticas
-            tradicionais com abordagens modernas voltadas para performance física, recuperação muscular, bem-estar e estética avançada.
-          </p>
-
-          <p class="mb-0">
-            Cada atendimento é pensado de forma personalizada, respeitando a individualidade e o objetivo de cada cliente —
-            seja para estética, reabilitação, performance ou relaxamento profundo.
-          </p>
+        <div class="rm-badges">
+          <span>Drenagem</span>
+          <span>Modeladora</span>
+          <span>Relaxante</span>
         </div>
 
-        <div class="row g-3 mb-4">
-          <div class="col-12 col-md-6">
-            <div class="fw-semibold">Atendimento</div>
-            <div class="muted">Humanizado, com foco em resultado e conforto.</div>
-          </div>
-          <div class="col-12 col-md-6">
-            <div class="fw-semibold">Localização</div>
-            <div class="muted">Limoeiro/Ipatinga • Sob agendamento</div>
-          </div>
-        </div>
-
-        <div class="d-flex flex-wrap gap-2">
-          <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-pill">Agendar agora</a>
-          <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-pill">Voltar</a>
-        </div>
+        <a href="{% url 'choose_professional' %}" class="btn btn-outline-light btn-pill">
+          Agendar com Caroline
+        </a>
       </div>
+
     </div>
+
   </div>
 
-  <!-- CARD 2 - CAROL -->
-  <div class="card card-soft rm-about-card">
-    <div class="rm-about-grid">
-      <div class="rm-about-photo-wrap">
-        <img
-          src="{% static 'core/img/carol5.png' %}"
-          alt="Caroline"
-          class="rm-about-photo rm-about-photo--carol"
-        >
-      </div>
+</section>
 
-      <div class="p-4 p-lg-5">
-        <span class="badge text-bg-light mb-3">Equipe</span>
-
-        <h3 class="rm-about-title fw-bold mb-2">Caroline</h3>
-
-        <div class="rm-about-text mb-4">
-          <p class="mb-3">
-            Técnica em Estética, a Carol atua com foco em cuidado, bem-estar e resultados visíveis, trazendo um atendimento
-            acolhedor e atento aos detalhes.
-          </p>
-
-          <p class="mb-0">
-            Com 7 meses de experiência prática, realiza drenagem linfática, massagens modeladoras e massagens relaxantes,
-            ajustando a intensidade e a técnica ao objetivo de cada cliente — seja reduzir retenção, melhorar o contorno corporal
-            ou simplesmente desacelerar e aliviar tensões do dia a dia.
-          </p>
-        </div>
-
-        <div class="row g-3 mb-4">
-          <div class="col-12 col-md-6">
-            <div class="fw-semibold">Especialidades</div>
-            <div class="muted">Drenagem linfática • Modeladora • Relaxante</div>
-          </div>
-          <div class="col-12 col-md-6">
-            <div class="fw-semibold">Atendimento</div>
-            <div class="muted">Sob agendamento • Experiência leve e profissional</div>
-          </div>
-        </div>
-
-        <div class="d-flex flex-wrap gap-2">
-          <a href="{% url 'choose_professional' %}" class="btn btn-primary btn-pill">Agendar agora</a>
-          <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-pill">Voltar</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
 {% endblock %}
+
